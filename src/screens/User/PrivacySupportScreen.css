@@ -1,0 +1,28 @@
+.privacy-container {
+  min-height: 100vh;
+  background-color: #F4F6F8;
+  padding: 24px;
+}
+
+.privacy-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0A2540;
+  margin-bottom: 24px;
+}
+
+.privacy-card {
+  margin-bottom: 16px;
+  padding: 24px;
+}
+
+.privacy-card h2 {
+  font-size: 20px;
+  color: #0A2540;
+  margin-bottom: 12px;
+}
+
+.privacy-card p {
+  color: #6C757D;
+  line-height: 1.6;
+}

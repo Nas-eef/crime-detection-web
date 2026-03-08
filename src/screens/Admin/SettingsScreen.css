@@ -1,0 +1,12 @@
+.settings-container {
+  min-height: 100vh;
+  background-color: #F4F6F8;
+  padding: 24px;
+}
+
+.settings-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0A2540;
+  margin-bottom: 24px;
+}

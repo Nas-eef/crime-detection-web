@@ -1,0 +1,120 @@
+.input-container {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0A2540;
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #0A2540;
+  background: #FFFFFF;
+  border: 2px solid rgba(10, 37, 64, 0.15);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  font-family: inherit;
+  box-shadow: 0 2px 4px rgba(10, 37, 64, 0.05);
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0A2540;
+  box-shadow: 0 0 0 4px rgba(10, 37, 64, 0.1), 0 4px 12px rgba(10, 37, 64, 0.1);
+  background: #FFFFFF;
+}
+
+.input::placeholder {
+  color: #9CA3AF;
+  font-weight: 400;
+}
+
+.input:disabled {
+  background: #F3F4F6;
+  color: #9CA3AF;
+  cursor: not-allowed;
+  border-color: rgba(10, 37, 64, 0.08);
+}
+
+.input:hover:not(:disabled):not(:focus) {
+  border-color: rgba(10, 37, 64, 0.25);
+}
+
+.input-with-icon {
+  padding-right: 50px;
+}
+
+.input-eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  z-index: 1;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: #6C757D;
+}
+
+.input-eye-icon:hover {
+  background: rgba(10, 37, 64, 0.05);
+  color: #0A2540;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.input-error {
+  border-color: #E63946 !important;
+  background: rgba(230, 57, 70, 0.02) !important;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.input-error-text {
+  display: block;
+  color: #E63946;
+  font-size: 13px;
+  margin-top: 6px;
+  padding-left: 4px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input-container:has(.input:focus) .input-label {
+  color: #0A2540;
+}

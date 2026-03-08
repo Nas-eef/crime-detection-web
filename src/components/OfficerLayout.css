@@ -1,0 +1,123 @@
+.officer-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+
+.officer-header {
+  background-color: #0A2540;
+  color: white;
+  padding: 16px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.officer-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.officer-header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.officer-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.officer-name {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.officer-content-wrapper {
+  display: flex;
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.officer-sidebar {
+  width: 240px;
+  background-color: white;
+  border-right: 1px solid #E0E0E0;
+  padding: 24px 0;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  color: #6C757D;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.nav-link:hover {
+  background-color: #F4F6F8;
+  color: #0A2540;
+}
+
+.nav-link.active {
+  background-color: rgba(10, 37, 64, 0.05);
+  color: #0A2540;
+  border-left-color: #0A2540;
+  font-weight: 600;
+}
+
+.nav-link span {
+  font-size: 14px;
+}
+
+.officer-main-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #FFFFFF;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .officer-sidebar {
+    width: 200px;
+  }
+
+  .officer-header-content {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .officer-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
