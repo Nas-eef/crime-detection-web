@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, Button } from '../../components';
+import { Card } from '../../components';
 import { useAuth } from '../../context/AuthContext';
 import { api, API_ENDPOINTS } from '../../config/api';
 import './DashboardScreen.css';
@@ -16,7 +16,7 @@ interface Stats {
 
 const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
-  const { logout, user } = useAuth();
+  const { user } = useAuth();
   const [stats, setStats] = useState<Stats>({ 
     totalCases: 0, 
     activeCases: 0, 

@@ -4,7 +4,11 @@ import './Button.css';
 
 interface ButtonProps {
   title: string;
-  onClick: () => void;
+  // Accept any function that takes an event (or no params) and returns void or Promise<void>
+  onClick?: ((e?: React.MouseEvent<HTMLButtonElement> | React.FormEvent) => void | Promise<void>) | 
+            ((e: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>) |
+            ((e: React.FormEvent) => void | Promise<void>) |
+            (() => void | Promise<void>);
   variant?: 'primary' | 'secondary' | 'danger' | 'success';
   loading?: boolean;
   disabled?: boolean;
@@ -37,11 +41,24 @@ const Button: React.FC<ButtonProps> = ({
     }
   };
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (onClick) {
+      // Cast to any to handle different function signatures (required vs optional event)
+      const result = (onClick as any)(e);
+      // Handle promise if async
+      if (result instanceof Promise) {
+        result.catch((error) => {
+          console.error('Button onClick error:', error);
+        });
+      }
+    }
+  };
+
   return (
     <button
       type={type}
       className={`btn btn-${variant} ${className}`}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled || loading}
       style={{ backgroundColor: getBackgroundColor() }}>
       {loading ? (

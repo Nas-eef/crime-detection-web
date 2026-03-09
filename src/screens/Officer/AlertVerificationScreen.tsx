@@ -8,7 +8,7 @@ const AlertVerificationScreen: React.FC = () => {
   const location = useLocation();
   const matchData = (location.state as any)?.match || null;
   
-  const [match, setMatch] = useState({
+  const [match] = useState({
     id: matchData?.id || '1',
     name: matchData?.name || 'John Doe',
     confidence: matchData?.confidence || 92.5,

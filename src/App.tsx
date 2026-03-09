@@ -12,7 +12,6 @@ import PrivacySupport from './screens/User/PrivacySupportScreen';
 
 // Officer Screens
 import OfficerLogin from './screens/Officer/OfficerLoginScreen';
-import OfficerRegister from './screens/Officer/OfficerRegisterScreen';
 import LiveDetection from './screens/Officer/LiveDetectionScreen';
 import CaseHandling from './screens/Officer/CaseHandlingScreen';
 import AlertVerification from './screens/Officer/AlertVerificationScreen';
@@ -20,13 +19,10 @@ import OfficerRegisterCase from './screens/Officer/RegisterCaseScreen';
 
 // Admin Screens
 import AdminLogin from './screens/Admin/AdminLoginScreen';
-import AdminRegister from './screens/Admin/AdminRegisterScreen';
 import AdminDashboard from './screens/Admin/DashboardScreen';
 import Analytics from './screens/Admin/AnalyticsScreen';
 import ManageUsers from './screens/Admin/ManageUsersScreen';
 import ManageOfficers from './screens/Admin/ManageOfficersScreen';
-import DatabaseManagement from './screens/Admin/DatabaseManagementScreen';
-import Settings from './screens/Admin/SettingsScreen';
 
 // Common Screens
 import SplashScreen from './screens/SplashScreen';

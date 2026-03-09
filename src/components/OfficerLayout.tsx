@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { IoCameraOutline, IoBriefcaseOutline, IoLogOutOutline } from 'react-icons/io5';
-import Colors from '../theme/colors';
 import './OfficerLayout.css';
 
 interface OfficerLayoutProps {

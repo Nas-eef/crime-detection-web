@@ -26,17 +26,16 @@ const LiveDetectionScreen: React.FC = () => {
   const [isStreaming, setIsStreaming] = useState(false);
   const [matches, setMatches] = useState<Match[]>([]);
   const [processing, setProcessing] = useState(false);
-  const [currentCase, setCurrentCase] = useState<CaseInfo | null>(
+  const [currentCase] = useState<CaseInfo | null>(
     (location.state as any)?.caseInfo || null
   );
-  const [specificCaseOnly, setSpecificCaseOnly] = useState<boolean>(
+  const [specificCaseOnly] = useState<boolean>(
     (location.state as any)?.specificCaseOnly || false
   );
   const [similarity, setSimilarity] = useState<number | null>(null);
   const [currentMatch, setCurrentMatch] = useState<Match | null>(null);
   const [frameCount, setFrameCount] = useState(0);
   const [matchFoundModalVisible, setMatchFoundModalVisible] = useState(false);
-  const [savingMatch, setSavingMatch] = useState(false);
   const [matchSaved, setMatchSaved] = useState(false);
   const [streamKey, setStreamKey] = useState<number>(0);
   const [faceBoxes, setFaceBoxes] = useState<Array<{
@@ -45,8 +44,8 @@ const LiveDetectionScreen: React.FC = () => {
   }>>([]);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
-  const captureIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const streamRefreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const captureIntervalRef = useRef<number | null>(null);
+  const streamRefreshIntervalRef = useRef<number | null>(null);
   const lastProcessTimeRef = useRef<number>(0);
 
   useEffect(() => {
@@ -56,8 +55,14 @@ const LiveDetectionScreen: React.FC = () => {
       setIsStreaming(true);
     }
     return () => {
-      if (captureIntervalRef.current) clearInterval(captureIntervalRef.current);
-      if (streamRefreshIntervalRef.current) clearInterval(streamRefreshIntervalRef.current);
+      if (captureIntervalRef.current) {
+        clearInterval(captureIntervalRef.current);
+        captureIntervalRef.current = null;
+      }
+      if (streamRefreshIntervalRef.current) {
+        clearInterval(streamRefreshIntervalRef.current);
+        streamRefreshIntervalRef.current = null;
+      }
     };
   }, []);
 
@@ -96,8 +101,14 @@ const LiveDetectionScreen: React.FC = () => {
       }
     }
     return () => {
-      if (captureIntervalRef.current) clearInterval(captureIntervalRef.current);
-      if (streamRefreshIntervalRef.current) clearInterval(streamRefreshIntervalRef.current);
+      if (captureIntervalRef.current) {
+        clearInterval(captureIntervalRef.current);
+        captureIntervalRef.current = null;
+      }
+      if (streamRefreshIntervalRef.current) {
+        clearInterval(streamRefreshIntervalRef.current);
+        streamRefreshIntervalRef.current = null;
+      }
     };
   }, [isStreaming, webcamStreamUrl]);
 
@@ -247,7 +258,6 @@ const LiveDetectionScreen: React.FC = () => {
     if (matchSaved) return;
 
     try {
-      setSavingMatch(true);
       setMatchSaved(true);
 
       await api.post(API_ENDPOINTS.SAVE_MATCH_RESULT, {
@@ -259,8 +269,7 @@ const LiveDetectionScreen: React.FC = () => {
     } catch (error: any) {
       console.error('Error saving match:', error);
       alert(error.response?.data?.error || 'Failed to save match result');
-    } finally {
-      setSavingMatch(false);
+      setMatchSaved(false); // Reset on error so user can retry
     }
   };
 

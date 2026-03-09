@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Card } from '../components';
-import Colors from '../theme/colors';
 import './UnifiedLoginScreen.css';
 
 const UnifiedLoginScreen: React.FC = () => {

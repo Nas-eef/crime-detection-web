@@ -199,7 +199,7 @@ const ManageOfficersScreen: React.FC = () => {
 
       {showEditModal && selectedOfficer && (
         <div className="modal-overlay" onClick={() => setShowEditModal(false)}>
-          <Card className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <Card className="modal-content" onClick={(e?: React.MouseEvent<HTMLDivElement>) => e?.stopPropagation()}>
             <h2 className="modal-title">Edit Officer</h2>
             <div className="modal-form">
               <Input

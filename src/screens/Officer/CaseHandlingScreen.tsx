@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Button, Input } from '../../components';
-import { useAuth } from '../../context/AuthContext';
 import { api, API_ENDPOINTS } from '../../config/api';
 import './CaseHandlingScreen.css';
 
@@ -23,7 +22,6 @@ interface Case {
 
 const CaseHandlingScreen: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
   const [cases, setCases] = useState<Case[]>([]);
   const [loading, setLoading] = useState(true);
@@ -200,8 +198,7 @@ const CaseHandlingScreen: React.FC = () => {
                     {caseItem.status !== 'closed' && (
                       <Button
                         title="Start Detection"
-                        onClick={(e) => {
-                          e.stopPropagation();
+                        onClick={() => {
                           startLiveDetection(caseItem);
                         }}
                       />
@@ -298,28 +295,28 @@ const CaseHandlingScreen: React.FC = () => {
                   title="Under Verification"
                   onClick={() => updateCaseStatus('underVerification')}
                   variant="secondary"
-                  disabled={updating || selectedCase.status === 'closed'}
+                  disabled={updating}
                   loading={updating}
                 />
                 <Button
                   title="Face Detection Active"
                   onClick={() => updateCaseStatus('faceDetectionActive')}
                   variant="secondary"
-                  disabled={updating || selectedCase.status === 'closed'}
+                  disabled={updating}
                   loading={updating}
                 />
                 <Button
                   title="Match Found"
                   onClick={() => updateCaseStatus('matchFound')}
                   variant="success"
-                  disabled={updating || selectedCase.status === 'closed'}
+                  disabled={updating}
                   loading={updating}
                 />
                 <Button
                   title="Close Case"
                   onClick={() => updateCaseStatus('closed')}
                   variant="danger"
-                  disabled={updating || selectedCase.status === 'closed'}
+                  disabled={updating}
                   loading={updating}
                 />
               </div>
