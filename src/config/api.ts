@@ -3,7 +3,8 @@ import axios from 'axios';
 // API Configuration
 // Update this to your backend server URL
 // const API_BASE_URL = 'http://localhost:5000'; // Raspberry Pi IP or your backend URL
-const API_BASE_URL = 'http://192.168.31.196:5000'; // Raspberry Pi IP or your backend URL
+const API_BASE_URL = ' https://cursory-anitra-disproportionally.ngrok-free.dev'; // Raspberry Pi IP or your backend URL
+// const API_BASE_URL = 'http://192.168.31.196:5000'; // Raspberry Pi IP or your backend URL
 
 // Create axios instance with default config
 export const api = axios.create({
